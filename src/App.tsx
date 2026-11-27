@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
-import TopographicBackground from '@/components/TopographicBackground';
+import CollageBackground from '@/components/CollageBackground';
 import Home from '@/views/Home';
 import About from '@/views/About';
 import Portfolio from '@/views/Portfolio';
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-200 tracking-tight">
-      <TopographicBackground offsetX={offset.x} offsetY={offset.y} />
+      <CollageBackground offsetX={offset.x} offsetY={offset.y} />
       <Navbar active={active} onNavigate={setActive} />
       <main className="relative z-10 min-h-screen">
         <ActiveView />

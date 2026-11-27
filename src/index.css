@@ -4,30 +4,39 @@
 
 body {
   font-family: 'PingFang SC', sans-serif;
+  background-color: #0a0a0a;
 }
 
-@keyframes topo-breathe {
-  0% {
-    transform: scale(1);
+@layer utilities {
+  /* 极细点阵 */
+  .dot-matrix {
+    background-image: radial-gradient(rgba(0, 255, 204, 0.6) 1px, transparent 1.4px);
+    background-size: 22px 22px;
   }
-  100% {
-    transform: scale(1.03);
-  }
-}
 
-.topo-texture {
-  background-image:
-    repeating-radial-gradient(circle at 18% 82%,
-      transparent 0, transparent 46px,
-      rgba(0, 240, 255, 0.05) 46px, rgba(0, 240, 255, 0.05) 47px),
-    repeating-radial-gradient(circle at 80% 24%,
-      transparent 0, transparent 58px,
-      rgba(0, 240, 255, 0.045) 58px, rgba(0, 240, 255, 0.045) 59px),
-    repeating-radial-gradient(circle at 55% 65%,
-      transparent 0, transparent 72px,
-      rgba(0, 240, 255, 0.035) 72px, rgba(0, 240, 255, 0.035) 73px),
-    repeating-radial-gradient(ellipse 140% 100% at 50% 50%,
-      transparent 0, transparent 96px,
-      rgba(0, 240, 255, 0.03) 96px, rgba(0, 240, 255, 0.03) 97px);
-  animation: topo-breathe 14s ease-in-out infinite alternate;
+  /* 水平条形码 / 刻度线 */
+  .barcode-h {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.55) 0 1px,
+      transparent 1px 5px
+    );
+  }
+
+  /* 垂直条形码 / 刻度线 */
+  .barcode-v {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.45) 0 1px,
+      transparent 1px 6px
+    );
+  }
+
+  /* 颗粒噪点 */
+  .noise-layer {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    opacity: 0.05;
+    mix-blend-mode: screen;
+  }
 }
